@@ -1,0 +1,22 @@
+<div class="search-container">
+  <form [formGroup]="myForm" class="search-form" (ngSubmit)="onSubmit(myForm)">
+    <mat-error *ngIf="myForm.controls['formInput'].invalid">
+      Only alphanumeric charakters are allowed
+    </mat-error>
+    <input
+      [ngClass]="{'search-inputAlt': myForm.controls['formInput'].invalid}"
+      formControlName="formInput"
+      class="search-input"
+      name="search"
+      placeholder="Search articles"
+      maxlength="40"
+    />
+    <button
+      class="search-button"
+      [ngClass]="{'search-inputAlt': myForm.controls['formInput'].invalid}">
+      <span>
+        <img src="./../../../assets/search_black_24dp.svg">
+      </span>
+    </button>
+  </form>
+</div>

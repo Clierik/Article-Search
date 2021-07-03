@@ -1,0 +1,81 @@
+.search {
+
+  &-container {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background-color: #fff;
+    box-shadow:  0px -8px 15px 3px #00000025;
+    padding: 10px 0;
+  }
+
+  &-form {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &-input {
+    width: 70%;
+    padding: 10px;
+    margin-right: 2px;
+    outline: none;
+    border: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: #fdfdfd;
+    border: 1px solid rgba($color: #8f8f8f, $alpha: 0.25);
+
+    // &:hover {
+    //   border: 1px solid rgba($color: #8f8f8f, $alpha: 0.5);
+    // }
+  }
+
+  &-button {
+    width: 10%;
+    padding-top: 5px;
+    background-color: #f3f3f3;
+    outline: none;
+    border: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 1px solid rgba($color: #8f8f8f, $alpha: 0.25);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+} ::ng-deep mat-error {
+  font-size: 10px;
+  position: absolute;
+  top: 5px;
+}
+
+.search-inputAlt {
+  border: 1px solid rgba($color: #ff8787, $alpha: 0.25);
+}
+
+.search-buttonAlt {
+  border: 1px solid rgba($color: #ff8787, $alpha: 0.25);
+}
+
+@media screen and (max-width: 1110px) {
+  .search {
+    &-form {
+      width: 75%;
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .search {
+    &-form {
+      width: 100%;
+    }
+  }
+}

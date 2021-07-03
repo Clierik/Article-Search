@@ -1,0 +1,19 @@
+<div class="articles">
+  <ng-container *ngFor="let article of articles">
+    <div class="article" (click)="openArticle(article)">
+      <div class="article-thumbnail-container">
+        <img
+          *ngIf="article.image"
+          src="{{article.image}}"
+          alt="thumbnail"
+          class="article-thumbnail"
+        />
+        <div class="article-information">
+          <p class="article-title">{{article.title}}</p>
+          <p class="article-publishedAt">{{article.publishedAt | date:"MM/dd/yy"}}</p>
+          <p class="article-description">{{article.description}}</p>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
