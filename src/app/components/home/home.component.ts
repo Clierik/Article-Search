@@ -1,6 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { Article } from 'src/app/models';
 import { HttpService } from 'src/app/services/http-service.service';
 
@@ -11,10 +9,7 @@ import { HttpService } from 'src/app/services/http-service.service';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  // public articles: Array<Article>;
-  // private routeSub: Subscription;
-  // private articleSub: Subscription;
-  articles: Array<any> = [];
+  articles: Array<Article> = [];
   articlesResp = [
     {
       title: 'Nick Leeder appointed as latest head of Google Ireland',
@@ -126,33 +121,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     },
   ];
 
-  constructor(private router: Router,
-              private httpService: HttpService,
-              private activateRoute: ActivatedRoute) {
+  constructor(private httpService: HttpService) {
     this.printArticles();
   }
 
   ngOnInit(): void {
 
-    // this.routeSub = this.activateRoute.params.subscribe((params: Params) => {
-    //   if (params['top-headlines']) {
-    //     this.getTopArticles()
-    //   }
-    // });
-
-    // const searchType = 'top-headlines';
-    // this.httpService.getArticleList(searchType).subscribe(resp => {
-    //   console.log(resp);
-    // }, err => {
-    //   console.log(err);
-    // });
-
-    // this.httpService.getArticleList("top-headlines?max=9?").subscribe(resp => {
-    //   console.log(resp);
-    // });
   }
 
-  // tslint:disable-next-line: typedef
   printArticles() {
     this.articles = [];
     setTimeout(() => {
