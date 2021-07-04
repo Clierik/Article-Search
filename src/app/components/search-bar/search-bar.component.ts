@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { HttpService } from 'src/app/services/http-service.service';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-search-bar',
@@ -9,22 +10,30 @@ import { HttpService } from 'src/app/services/http-service.service';
 })
 export class SearchBarComponent implements OnInit {
 
+  @Output() onArticles = new EventEmitter<any>();
   myForm: FormGroup;
 
   constructor(public fb: FormBuilder,
               public http: HttpService) {
-    this.myForm = this.fb.group({
-      formInput: ['', Validators.pattern('^[a-zA-Z0-9_]*$')]
+              this.myForm = this.fb.group({
+                formInput: ['', Validators.pattern('^[-_ a-zA-Z0-9]+$')]
+              });
+  }
+
+  ngOnInit(): void {
+    this.http.getTopArticles().subscribe((resp: any) => {
+      this.onArticles.emit(JSON.parse(resp).articles);
+    }, err => {
+      console.log(err);
     });
   }
 
-  ngOnInit(): void {}
-
-  onSubmit(form: FormGroup): void {
+  onSubmit(): void {
     if (this.myForm.valid) {
-      console.log(form.value);
-      // this.http.artickleSearch(form.value);
-      // need a way to pass the result homepage
+      let searchString = encodeURIComponent(this.myForm.value['formInput']);
+      this.http.artickleSearch(searchString).subscribe((resp: any) => {
+        this.onArticles.emit(JSON.parse(resp).articles);
+      });
     }
   }
 

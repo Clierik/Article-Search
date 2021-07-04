@@ -1,7 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment as env } from 'src/environments/environment';
 import { Article } from '../models';
 
 @Injectable({
@@ -12,16 +11,17 @@ export class HttpService {
   constructor(private http: HttpClient) {
   }
 
-  public artickleClick(article: Article) {
-    // for when an artickle is clicked
+  public artickleClick(article: object) {
+    return this.http.post('http://localhost:3000/clicks', article);
   }
 
   public artickleSearch(search: string) {
-    // for when the search button is clicked
+    return this.http.get(`http://localhost:3000/search/${search}`);
   }
 
   public getTopArticles() {
-    // for when the website initialy loads
+    return this.http.get('http://localhost:3000/top');
   }
+
 
 }

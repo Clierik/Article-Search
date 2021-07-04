@@ -1,3 +1,5 @@
+<app-search-bar (onArticles)="passArticleData($event)"></app-search-bar>
+
 <div class="articles">
   <ng-container *ngFor="let article of articles">
     <div class="article" (click)="openArticle(article)">
