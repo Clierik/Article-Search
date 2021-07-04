@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "license": "MIT",
+  "author": "Evaldas Čekys",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./index.js ",
     "dev": "nodemon ./index.js"
   },
-  "author": "Evaldas Čekys",
-  "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
