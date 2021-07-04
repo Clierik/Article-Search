@@ -23,9 +23,9 @@ export class HomeComponent implements OnInit {
 
   openArticle(article: Article) {
     window.open(article.url, '_blank');
-    console.log(article);
-    this.http.artickleClick(article).subscribe();
+    this.http.artickleClick(article).subscribe(() => {}, err => {
+      console.log(err);
+    });
   }
-
 
 }

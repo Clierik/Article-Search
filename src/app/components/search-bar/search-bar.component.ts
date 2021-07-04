@@ -33,6 +33,8 @@ export class SearchBarComponent implements OnInit {
       let searchString = encodeURIComponent(this.myForm.value['formInput']);
       this.http.artickleSearch(searchString).subscribe((resp: any) => {
         this.onArticles.emit(JSON.parse(resp).articles);
+      }, err => {
+        console.log(err);
       });
     }
   }

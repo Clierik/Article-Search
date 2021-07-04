@@ -10,6 +10,12 @@
           alt="thumbnail"
           class="article-thumbnail"
         />
+        <img
+          *ngIf="!article.image"
+          src="./../../../assets/no-image.png"
+          alt="noImage"
+          class="article-thumbnail"
+        />
         <div class="article-information">
           <p class="article-title">{{article.title}}</p>
           <p class="article-publishedAt">{{article.publishedAt | date:"MM/dd/yy"}}</p>

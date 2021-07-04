@@ -58,18 +58,3 @@ const server = http.createServer(app);
 server.listen(port, () => {
     console.log(`Server started at localhost:${port}`);
 });
-
-// const clicksSchema = new mongoose.Schema({
-//   clickData: {
-//     content: String,
-//     description: String,
-//     image: String,
-//     publishedAt: String,
-//     source: {
-//       name: String,
-//       url: String,
-//     },
-//     title: String,
-//     url: String
-//   }
-// });
