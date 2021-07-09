@@ -9,11 +9,11 @@ export class HttpService {
   constructor(private http: HttpClient) {
   }
 
-  public artickleClick(article: object) {
+  public articleClick(article: object) {
     return this.http.post('http://localhost:3000/clicks', article);
   }
 
-  public artickleSearch(search: string) {
+  public articleSearch(search: string) {
     return this.http.get(`http://localhost:3000/search/${search}`);
   }
 
