@@ -7,9 +7,9 @@ const router = express.Router();
 const app = express();
 const port = 3000;
 
-const url = process.env.BASE_URL;
-const token = process.env.API_TOKEN;
-const dbUrl = process.env.DB_URL;
+const url = 'https://gnews.io/api/v4';
+const token = '6d06c7544782d05ad102766a61efafda';
+const dbUrl = 'mongodb://localhost:27017/article-search-be';
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

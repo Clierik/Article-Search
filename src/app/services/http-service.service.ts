@@ -21,5 +21,4 @@ export class HttpService {
     return this.http.get('http://localhost:3000/top');
   }
 
-
 }
