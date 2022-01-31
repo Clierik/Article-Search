@@ -7,11 +7,15 @@ const router = express.Router();
 const app = express();
 const port = 3000;
 
+const url = 'https://gnews.io/api/v4';
+const token = '6d06c7544782d05ad102766a61efafda';
+const dbUrl = 'mongodb://localhost:27017/article-search-be';
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/article-search-be', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(dbUrl, {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -34,7 +38,7 @@ router.post('/clicks', async (req, res) => {
 });
 
 app.get('/search/:search', async (req, res) => {
-  const resp = await got.get(`https://gnews.io/api/v4/search?q=${req.params.search}&max=9&lang=en&token=6d06c7544782d05ad102766a61efafda`);
+  const resp = await got.get(`${url}/search?q=${req.params.search}&max=9&lang=en&token=${token}`);
   const newSearch = new SearchModel({ search: req.params.search });
   newSearch.save(function (err, newSearch) {
     if (err) return console.error(err);
@@ -43,15 +47,9 @@ app.get('/search/:search', async (req, res) => {
 });
 
 app.get('/top', async (req, res) => {
-  const resp = await got.get('https://gnews.io/api/v4/top-headlines?&max=9&lang=en&token=6d06c7544782d05ad102766a61efafda');
+  const resp = await got.get(`${url}/top-headlines?&max=9&lang=en&token=${token}`);
   res.status(200).json(resp.body);
 });
-
-
-app.post('/', (req, res) => {
-  res.send('Hello World!')
-});
-
 
 const server = http.createServer(app);
 
